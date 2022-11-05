@@ -3,3 +3,5 @@ uvicorn[standard]
 sympy
 pytest
 requests
+python-multipart
+opencv-python
