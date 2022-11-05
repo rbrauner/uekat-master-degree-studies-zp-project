@@ -8,6 +8,6 @@ async def create_user(number: int):
     isPrime = sympy.isprime(number)
 
     return {
-        "isPrime": isPrime,
+        "is_prime": isPrime,
         "number": number,
     }
