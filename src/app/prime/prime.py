@@ -5,7 +5,7 @@ prime_router = APIRouter()
 
 
 @prime_router.get("/prime/{number}")
-async def create_user(number: int):
+async def prime(number: int):
     isPrime = sympy.isprime(number)
 
     return {
