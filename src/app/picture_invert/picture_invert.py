@@ -1,10 +1,11 @@
-from fastapi import APIRouter, UploadFile, BackgroundTasks
+from fastapi import APIRouter, UploadFile, BackgroundTasks, HTTPException
 from fastapi.responses import FileResponse
 import tempfile
 import shutil
 import os
 import cv2
 import numpy as np
+import mimetypes
 
 picture_invert_router = APIRouter()
 
@@ -20,10 +21,14 @@ async def picture_invert(background_tasks: BackgroundTasks, file: UploadFile):
     with open(tempFileName, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
+        mimetype = mimetypes.guess_extension(tempFileName)
+        if mimetype == None or mimetype[0] != "image/jpeg":
+            raise HTTPException(status_code=406, detail="Not valid mime type")
+
         image = cv2.imread(tempFileName)
         image = np.invert(image)
         cv2.imwrite(tempFileName, image)
 
         background_tasks.add_task(remove_file, tempFileName)
 
-    return FileResponse(tempFileName, media_type=file.content_type)
+    return FileResponse(tempFileName, media_type=mimetypes.guess_type(tempFileName)[0])
