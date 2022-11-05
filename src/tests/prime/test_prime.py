@@ -25,10 +25,7 @@ class TestPrime:
                                                                                                                                                                                                                                                 "data": {"is_prime": True, "number": 531137992816767098689588206552468627329593117727031923199444138200403559860852242739162502265229285668889329486246501015346579337652707239409519978766587351943831270835393219031728127}}},
         ]
 
-        for td in testData:
-            resp = self.client.get(td['request']['url'])
-            assert resp.status_code == td['response']['status_code']
-            assert resp.json() == td['response']['data']
+        self._processTestData(testData)
 
     def test_invalid_numbers(self):
         testData = [
@@ -44,6 +41,9 @@ class TestPrime:
                 "response": {"status_code": 404, "data": {"detail": "Not Found"}}},
         ]
 
+        self._processTestData(testData)
+
+    def _processTestData(self, testData):
         for td in testData:
             resp = self.client.get(td['request']['url'])
             assert resp.status_code == td['response']['status_code']
