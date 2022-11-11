@@ -6,6 +6,7 @@ import os
 import cv2
 import numpy as np
 import mimetypes
+from pathlib import Path
 
 picture_invert_router = APIRouter()
 
@@ -16,14 +17,14 @@ def remove_file(path: str):
 
 @picture_invert_router.post("/picture/invert")
 async def picture_invert(background_tasks: BackgroundTasks, file: UploadFile):
+    if file.content_type != "image/jpeg":
+        raise HTTPException(status_code=406, detail="Not valid mime type")
+
+    Path("tmp").mkdir(parents=True, exist_ok=True)
     tempFileName = "tmp/" + next(tempfile._get_candidate_names()) + ".jpeg"
 
     with open(tempFileName, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
-
-        mimetype = mimetypes.guess_extension(tempFileName)
-        if mimetype == None or mimetype[0] != "image/jpeg":
-            raise HTTPException(status_code=406, detail="Not valid mime type")
 
         image = cv2.imread(tempFileName)
         image = np.invert(image)
