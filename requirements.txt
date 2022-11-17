@@ -5,3 +5,4 @@ pytest
 requests
 python-multipart
 opencv-python
+bcrypt
