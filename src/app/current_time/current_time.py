@@ -59,6 +59,9 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     if not bcrypt.checkpw(form_data.password.encode('utf-8'), user.hashed_password.encode('utf-8')):
         raise HTTPException(status_code=400, detail="Incorrect username or password")
 
+    if user.disabled:
+        raise HTTPException(status_code=401, detail="Disabled user")
+
     return {"access_token": user.username, "token_type": "bearer"}
 
 @current_time_router.get("/current-time")
