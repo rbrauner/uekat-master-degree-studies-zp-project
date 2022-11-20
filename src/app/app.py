@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from src.app.homepage.homepage import homepage_router
 from src.app.prime.prime import prime_router
 from src.app.picture_invert.picture_invert import picture_invert_router
 from src.app.current_time.current_time import current_time_router
@@ -22,6 +23,7 @@ app = FastAPI(
         "url": "https://github.com/rbrauner/uekat-studies-zp-project/blob/main/LICENSE",
     },
 )
+app.include_router(homepage_router)
 app.include_router(prime_router)
 app.include_router(picture_invert_router)
 app.include_router(current_time_router)
