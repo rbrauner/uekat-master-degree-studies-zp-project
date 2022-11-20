@@ -1,1 +1,1 @@
-# ue-nsi-zp-project
+# uekat-studies-zp-project
