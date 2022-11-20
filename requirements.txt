@@ -4,6 +4,6 @@ sympy
 pytest
 requests
 python-multipart
-opencv-python
+opencv-python-headless
 bcrypt
 httpx
