@@ -1,0 +1,6 @@
+Method,Name,Error,Occurrences
+POST,/picture/invert,HTTPError('503 Server Error: Service Unavailable for url: https://uekat-studies-zp-project.herokuapp.com/picture/invert'),160
+GET,/prime/-2,RemoteDisconnected('Remote end closed connection without response'),3
+POST,/token,HTTPError('503 Server Error: Service Unavailable for url: https://uekat-studies-zp-project.herokuapp.com/token'),145
+POST,/picture/invert,RemoteDisconnected('Remote end closed connection without response'),6
+POST,/token,RemoteDisconnected('Remote end closed connection without response'),4
