@@ -1,5 +1,7 @@
 # uekat-studies-zp-project
 
+Uniwersytet Ekonimiczny in Katowice - project for the subject "Zaawansowane programowanie"
+
 ## Instalation
 
 ```py
