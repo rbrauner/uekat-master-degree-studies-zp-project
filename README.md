@@ -1,6 +1,6 @@
-# uekat-studies-zp-project
+# uekat-master-degree-studies-zp-project
 
-Uniwersytet Ekonimiczny in Katowice - project for the subject "Zaawansowane programowanie"
+Uniwersytet Ekonimiczny in Katowice - master degree studies - project for the subject "Zaawansowane programowanie"
 
 ## Instalation
 
